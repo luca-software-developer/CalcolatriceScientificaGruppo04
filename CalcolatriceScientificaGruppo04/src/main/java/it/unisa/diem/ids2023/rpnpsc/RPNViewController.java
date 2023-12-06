@@ -16,8 +16,10 @@ import javafx.scene.control.ListView;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SplitMenuButton;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.stage.Stage;
 
 /**
  * La classe {@code RPNViewController} rappresenta il controller MVC
@@ -83,8 +85,13 @@ public class RPNViewController implements Initializable {
         this.memory = Memory.getInstance();
         this.errorAlert = new Alert(Alert.AlertType.ERROR);
         this.errorAlert.setTitle(RPNCalculator.APP_NAME);
+        Image alertIcon = new Image(RPNCalculator.class.getResourceAsStream("images/icon.png"));
+        Stage errorStage = (Stage) this.errorAlert.getDialogPane().getScene().getWindow();
+        errorStage.getIcons().add(alertIcon);
         this.warningAlert = new Alert(Alert.AlertType.WARNING);
         this.warningAlert.setTitle(RPNCalculator.APP_NAME);
+        Stage warningStage = (Stage) this.warningAlert.getDialogPane().getScene().getWindow();
+        warningStage.getIcons().add(alertIcon);
     }
 
     /**
@@ -99,7 +106,6 @@ public class RPNViewController implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         lstStack.setItems(stack.getObservableList());
-        txtElemento.requestFocus();
         smbInitialText = smbVariables.getText();
         Iterator<MenuItem> iterator = smbVariables.getItems().iterator();
         while (iterator.hasNext()) {
@@ -129,8 +135,8 @@ public class RPNViewController implements Initializable {
             if (keyEvent.getCode() == KeyCode.ENTER) {
                 if (keyEvent.isControlDown()) {
                     applySolve(event);
+                    return;
                 }
-                event.consume();
             } else {
                 return;
             }

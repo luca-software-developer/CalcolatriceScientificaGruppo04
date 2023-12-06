@@ -229,7 +229,7 @@
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <Button alignment="CENTER" defaultButton="true" mnemonicParsing="false" onAction="#applySolve" prefWidth="100.0" text="=" GridPane.columnIndex="3" GridPane.rowIndex="4">
+                  <Button alignment="CENTER" focusTraversable="false" mnemonicParsing="false" onAction="#applySolve" prefWidth="100.0" style="-fx-base: -fx-default-button;" text="=" GridPane.columnIndex="3" GridPane.rowIndex="4">
                      <font>
                         <Font size="14.0" />
                      </font>

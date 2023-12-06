@@ -134,7 +134,7 @@ public class RPNStack {
      */
     public Complex solve() throws RPNException {
         if (isEmpty()) {
-            throw new InsufficientArgumentsException("Argomenti insufficienti!", "Gli argomenti forniti sono insufficienti o specificati in ordine errato.");
+            throw new InsufficientArgumentsException("Argomenti insufficienti!", "Gli argomenti forniti sono insufficienti.");
         }
         String item = pop();
         if (isOperand(item)) {
