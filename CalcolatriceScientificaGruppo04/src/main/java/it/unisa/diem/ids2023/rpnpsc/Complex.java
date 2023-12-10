@@ -123,7 +123,7 @@ public class Complex {
             String imaginaryString = complexMatcher.group("imaginary");
             return new Complex(Double.parseDouble(realString), Double.parseDouble(imaginaryString));
         } else {
-            throw new InvalidFormatException("Formato non valido!", "L'elemento \"" + text + "\" non corrisponde ad un operando reale o complesso.");
+            throw new InvalidFormatException("Formato non valido!", "L'elemento \"" + text + "\" non corrisponde ad un operando.");
         }
     }
 
@@ -258,7 +258,7 @@ public class Complex {
             imaginaryString = imaginaryString.replaceAll("[+]1$", a == 0 ? "" : "+");
             imaginaryString = imaginaryString.replaceAll("[-]1$", "-");
             if (realString.isEmpty() && b > 0) {
-                imaginaryString = imaginaryString.substring(1);
+                imaginaryString = imaginaryString.replaceAll("[+]", "");
             }
             return String.format("%s%sj", realString, imaginaryString);
         }

@@ -257,13 +257,16 @@ public class RPNStack {
      * contenuti nello stack non sono sufficienti a completare l'operazione.
      */
     public void swap() throws InsufficientArgumentsException {
+        if (size() < 2) {
+            throw new InsufficientArgumentsException("Argomenti insufficienti!", "Non è possibile completare l'operazione.");
+        }
         try {
             String first = pop();
             String second = pop();
             push(first);
             push(second);
         } catch (EmptyStackException ex) {
-            throw new InsufficientArgumentsException("Argomenti insufficienti!", "Non è possibile completare l'operazione.");
+            //  Condizione già gestita.
         }
     }
 
@@ -274,13 +277,16 @@ public class RPNStack {
      * contenuti nello stack non sono sufficienti a completare l'operazione.
      */
     public void over() throws InsufficientArgumentsException {
+        if (size() < 2) {
+            throw new InsufficientArgumentsException("Argomenti insufficienti!", "Non è possibile completare l'operazione.");
+        }
         try {
             String last = pop();
             String secondLast = top();
             push(last);
             push(secondLast);
         } catch (EmptyStackException ex) {
-            throw new InsufficientArgumentsException("Argomenti insufficienti!", "Non è possibile completare l'operazione.");
+            //  Condizione già gestita.
         }
     }
 

@@ -2,6 +2,7 @@ package it.unisa.diem.ids2023.rpnpsc;
 
 import it.unisa.diem.ids2023.rpnpsc.exceptions.RPNException;
 import java.net.URL;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.ResourceBundle;
 import java.util.regex.Matcher;
@@ -148,6 +149,7 @@ public class RPNViewController implements Initializable {
         }
         if (RPNStack.isOperand(element) || RPNStack.isOperator(element)) {
             stack.push(element);
+            lstStack.scrollTo(stack.size() - 1);
             return;
         }
         if (element.equals("=")) {
@@ -189,41 +191,48 @@ public class RPNViewController implements Initializable {
             if (variableMatcher.find()) {
                 char operation = variableMatcher.group("operation").charAt(0);
                 char variable = variableMatcher.group("variable").charAt(0);
+                if (Arrays.asList('<', '+', '-').contains(operation) && memory.getVariable(variable) == null) {
+                    errorAlert.setHeaderText("Variabile non inizializzata!");
+                    errorAlert.setContentText("La variabile specificata non possiede un valore.");
+                    errorAlert.show();
+                    return;
+                }
                 switch (operation) {
                     case '>': {
                         try {
-                            memory.setVariable(variable, Complex.parse(stack.pop()));
+                            memory.setVariable(variable, Complex.parse(stack.top()));
+                            stack.pop();
                         } catch (RPNException ex) {
                             errorAlert.setHeaderText(ex.getHeaderText());
                             errorAlert.setContentText(ex.getContentText());
                             errorAlert.show();
-                            return;
                         }
                         break;
                     }
                     case '<': {
                         stack.push(memory.getVariable(variable).toString());
+                        lstStack.scrollTo(stack.size() - 1);
                         break;
                     }
                     case '+': {
                         try {
-                            memory.setVariable(variable, memory.getVariable(variable).add(Complex.parse(stack.pop())));
+                            memory.setVariable(variable, memory.getVariable(variable).add(Complex.parse(stack.top())));
+                            stack.pop();
                         } catch (RPNException ex) {
                             errorAlert.setHeaderText(ex.getHeaderText());
                             errorAlert.setContentText(ex.getContentText());
                             errorAlert.show();
-                            return;
                         }
                         break;
                     }
                     case '-': {
                         try {
-                            memory.setVariable(variable, memory.getVariable(variable).subtract(Complex.parse(stack.pop())));
+                            memory.setVariable(variable, memory.getVariable(variable).subtract(Complex.parse(stack.top())));
+                            stack.pop();
                         } catch (RPNException ex) {
                             errorAlert.setHeaderText(ex.getHeaderText());
                             errorAlert.setContentText(ex.getContentText());
                             errorAlert.show();
-                            return;
                         }
                         break;
                     }
@@ -377,6 +386,7 @@ public class RPNViewController implements Initializable {
     private void applyDup(Event event) {
         try {
             stack.dup();
+            lstStack.scrollTo(stack.size() - 1);
         } catch (RPNException ex) {
             errorAlert.setHeaderText(ex.getHeaderText());
             errorAlert.setContentText(ex.getContentText());
@@ -411,6 +421,7 @@ public class RPNViewController implements Initializable {
     private void applyOver(Event event) {
         try {
             stack.over();
+            lstStack.scrollTo(stack.size() - 1);
         } catch (RPNException ex) {
             errorAlert.setHeaderText(ex.getHeaderText());
             errorAlert.setContentText(ex.getContentText());

@@ -122,7 +122,7 @@
                         <Font size="14.0" />
                      </font>
                   </Button>
-                  <SplitMenuButton fx:id="smbVariables" focusTraversable="false" mnemonicParsing="false" onAction="#openVariablesMenu" prefWidth="100.0" text="..." GridPane.columnIndex="2" GridPane.rowIndex="4">
+                  <SplitMenuButton fx:id="smbVariables" alignment="CENTER" focusTraversable="false" mnemonicParsing="false" onAction="#openVariablesMenu" prefWidth="100.0" text="..." GridPane.columnIndex="2" GridPane.rowIndex="4">
                     <items>
                       <MenuItem mnemonicParsing="false" text="d" />
                       <MenuItem mnemonicParsing="false" text="e" />

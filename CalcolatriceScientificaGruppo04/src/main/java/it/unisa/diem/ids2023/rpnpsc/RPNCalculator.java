@@ -22,7 +22,7 @@ public class RPNCalculator extends Application {
      * Rappresenta la versione attuale dell'applicazione, visualizzata nella
      * barra del titolo.
      */
-    public static final String APP_VERSION = "1.0.1.0";
+    public static final String APP_VERSION = "1.0.2.0";
 
     /**
      * Carica la view dal file RPNView.fxml e costruisce la scena. Imposta la

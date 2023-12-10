@@ -48,9 +48,6 @@ public class Memory {
      * @return Restituisce il valore della variabile passata come parametro.
      */
     public Complex getVariable(char variable) {
-        if (!memory.containsKey(variable)) {
-            memory.put(variable, new Complex(0));
-        }
         return memory.get(variable);
     }
 
