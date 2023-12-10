@@ -2,9 +2,10 @@
 
 # RPN Programmable Scientific Calculator
 
-![Version: 1.0.1.0](https://img.shields.io/badge/version-1.0.1.0-blue)
+![Build: Passing](https://img.shields.io/badge/build-passing-brightgreen)
+![Version: 1.0.2.0](https://img.shields.io/badge/version-1.0.2.0-blue)
 ![License: GPL v3](https://img.shields.io/badge/license-GPLv3-blue)
 
 Calcolatrice Scientifica Programmabile basata su RPN gestita con Stack che supporta il calcolo complesso.
 
-![screenshot](https://github.com/luca-software-developer/CalcolatriceScientificaGruppo04/assets/67876436/b1b732f4-2f83-48c1-b78b-8523937d8a8b)
+![screenshot](https://github.com/luca-software-developer/CalcolatriceScientificaGruppo04/assets/67876436/1bf07415-c911-4fa9-ac90-ec9fc1c08d60)
