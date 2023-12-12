@@ -258,7 +258,7 @@ public class RPNStack {
      */
     public void swap() throws InsufficientArgumentsException {
         if (size() < 2) {
-            throw new InsufficientArgumentsException("Argomenti insufficienti!", "Non è possibile completare l'operazione.");
+            throw new InsufficientArgumentsException("Argomenti insufficienti!", "Non è possibile completare l'operazione di swap.");
         }
         try {
             String first = pop();
@@ -278,7 +278,7 @@ public class RPNStack {
      */
     public void over() throws InsufficientArgumentsException {
         if (size() < 2) {
-            throw new InsufficientArgumentsException("Argomenti insufficienti!", "Non è possibile completare l'operazione.");
+            throw new InsufficientArgumentsException("Argomenti insufficienti!", "Non è possibile completare l'operazione di over.");
         }
         try {
             String last = pop();

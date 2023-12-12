@@ -134,7 +134,7 @@ public class RPNViewController implements Initializable {
         if (event instanceof KeyEvent) {
             KeyEvent keyEvent = (KeyEvent) event;
             if (keyEvent.getCode() == KeyCode.ENTER) {
-                if (keyEvent.isControlDown()) {
+                if (keyEvent.isControlDown() || keyEvent.isShortcutDown()) {
                     applySolve(event);
                     return;
                 }
@@ -324,7 +324,9 @@ public class RPNViewController implements Initializable {
             errorAlert.setHeaderText("Divisione per zero!");
             errorAlert.setContentText("Non è possibile dividere per zero.");
             errorAlert.show();
-            applySolve(event);
+            if (!stack.isEmpty()) {
+                applySolve(event);
+            }
         } catch (RPNException ex) {
             errorAlert.setHeaderText(ex.getHeaderText());
             errorAlert.setContentText(ex.getContentText());
